@@ -25,6 +25,12 @@ git@github.com:Julia-Nafikova/Homework_10_1.git
 ```
 poetry install
 ```
+##Тестирование
+* Добавлены тесты модуля masks
+* Добавлены тесты модуля widget
+* Добавлены тесты модуля processing
+
+Покрытие тестами 95%
 
 ##Использование:
 
