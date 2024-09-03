@@ -13,7 +13,8 @@ def card_number():
                                                    ('700079228960636112', 'Ошибка ввода'),
                                                    ('67543821', 'Ошибка ввода'),
                                                    ('aujsgtfdnclo', 'Ошибка ввода'),
-                                                   ('', 'Ошибка ввода')])
+                                                   ('', 'Ошибка ввода')
+                                                   ])
 
 def test_get_mask_card_number(card_number, expected):
     assert get_mask_card_number(card_number) == expected
@@ -27,7 +28,8 @@ def acc_number():
                                                    ('2345615789532145876521', 'Ошибка ввода'),
                                                    ('67543821', 'Ошибка ввода'),
                                                    ('5au1j2s45gtfd12nclo3', 'Ошибка ввода'),
-                                                   ('', 'Ошибка ввода')])
+                                                   ('', 'Ошибка ввода')
+                                                  ])
 
 def test_get_mask_account(acc_number, expected):
     assert get_mask_account(acc_number) == expected
