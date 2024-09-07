@@ -87,6 +87,8 @@ def filter_by_currency(list_dict, code):
         for dictionary in list_dict:
             if dictionary.get("operationAmount", {}).get("currency", {}).get("code", {}) == code.upper():
                 yield dictionary
+
+
 #
 #
 #
@@ -109,10 +111,13 @@ def transaction_descriptions(list_dict):
     else:
         for dictionary in list_dict:
             yield dictionary.get("description")
+
+
 #
 # descriptions = transaction_descriptions(transactions)
 # for item in range(5):
 #     print(next(descriptions))
+
 
 def card_number_generator(start, stop):
     """Функция генерирует номера банковских карт"""
@@ -120,7 +125,9 @@ def card_number_generator(start, stop):
         card_number = str(i)
         while len(card_number) < 16:
             card_number = "0" + card_number
-        yield f'{card_number[:4]} {card_number[4:8]} {card_number[8:12]} {card_number[12:]}'
+        yield f"{card_number[:4]} {card_number[4:8]} {card_number[8:12]} {card_number[12:]}"
+
+
 #
 #
 # for card_number in card_number_generator(1, 5):
