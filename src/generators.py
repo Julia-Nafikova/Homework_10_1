@@ -1,4 +1,3 @@
-import random
 #
 # transactions = (
 #         [
@@ -80,34 +79,49 @@ import random
 #         ]
 #     )
 #
-# def filter_by_currency(list_dict: list, code: str) -> iter:
-#     """Функция возвращает итератор в соответсвии с заданным значением валюты"""
-#     for dictionary in list_dict:
-#         if dictionary["operationAmount"]["currency"]["code"] == code:
-#             yield dictionary
+def filter_by_currency(list_dict, code):
+    """Функция возвращает итератор в соответсвии с заданным значением валюты"""
+    if list_dict == []:
+        yield "Нет транзакций"
+    else:
+        for dictionary in list_dict:
+            if dictionary.get("operationAmount", {}).get("currency", {}).get("code", {}) == code.upper():
+                yield dictionary
 #
 #
-# usd_transactions = filter_by_currency(transactions, "USD")
 #
-# for item in range(3):
-#     print(next(usd_transactions))
+# try:
+#     usd_transactions = filter_by_currency([], "")
+#
+#     for item in range(1):
+#         print(next(usd_transactions))
+#
+# except StopIteration:
+#     print("Транзакции в заданной валюте отсутствуют")
+
+
 #
 #
-# def transaction_descriptions(list_dict):
-#     for dictionary in list_dict:
-#         yield dictionary.get("description")
+def transaction_descriptions(list_dict):
+    """Функция возвращает описание каждой операции из транзакций по очереди"""
+    if list_dict == []:
+        yield "Нет транзакций"
+    else:
+        for dictionary in list_dict:
+            yield dictionary.get("description")
 #
 # descriptions = transaction_descriptions(transactions)
 # for item in range(5):
 #     print(next(descriptions))
 
 def card_number_generator(start, stop):
+    """Функция генерирует номера банковских карт"""
     for i in range(start, stop):
         card_number = str(i)
         while len(card_number) < 16:
             card_number = "0" + card_number
-        yield card_number
-
-
-for card_number in card_number_generator(99999990, 99999999):
-    print(card_number)
+        yield f'{card_number[:4]} {card_number[4:8]} {card_number[8:12]} {card_number[12:]}'
+#
+#
+# for card_number in card_number_generator(1, 5):
+#     print(card_number)
