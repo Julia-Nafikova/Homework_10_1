@@ -113,10 +113,6 @@ def test_transaction_descriptions_zero():
     assert next(generator) == "Нет транзакций"
 
 def test_card_number_generator():
-    generator = transaction_descriptions([])
-    assert next(generator) == "Нет транзакций"
-
-def test_card_number_generator():
     generator = card_number_generator(1, 5)
     assert next(generator) == "0000 0000 0000 0001"
     assert next(generator) == "0000 0000 0000 0002"
