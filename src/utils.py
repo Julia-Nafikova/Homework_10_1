@@ -12,4 +12,4 @@ def read_file(path):
 
         return data
 
-print(read_file('../data/operations.json'))
+transaction_data = read_file('../data/operations.json')
