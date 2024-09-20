@@ -3,7 +3,13 @@ import json
 
 def read_file(path):
     with open(path, encoding='utf-8') as f:
-        data = json.load(f)
+        try:
+            data = json.load(f)
+        except json.JSONDecodeError:
+            print("Invalid JSON data.")
+        except FileNotFoundError as e:
+            print(e)
+
         return data
 
 print(read_file('../data/operations.json'))
