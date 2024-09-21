@@ -2,14 +2,14 @@ import json
 
 
 def read_file(path):
-    with open(path, encoding='utf-8') as f:
-        try:
-            data = json.load(f)
-        except json.JSONDecodeError:
-            print("Invalid JSON data.")
-        except FileNotFoundError as e:
-            print(e)
+    transaction_data = []
+    try:
+        with open(path, encoding='utf-8') as f:
+            transaction_data = json.load(f)
+    except json.JSONDecodeError:
+        print("Invalid JSON data.")
+    except FileNotFoundError as e:
+        print(e)
+    return transaction_data
 
-        return data
-
-transaction_data = read_file('../data/operations.json')
+# print(read_file('../data/operation.json'))
