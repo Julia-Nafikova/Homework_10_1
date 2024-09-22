@@ -4,24 +4,24 @@ from dotenv import load_dotenv
 
 
 load_dotenv()
-API_KEY=os.getenv('API_KEY')
+API_KEY = os.getenv("API_KEY")
 
 payload = {}
-headers= {
-  "apikey": API_KEY
-}
+headers = {"apikey": API_KEY}
+
 
 def conversion_func(transaction):
-    currency_code_to = 'RUB'
-    currency_code_from = transaction['operationAmount']['currency']['code']
-    amount = transaction['operationAmount']['amount']
-    url = f'https://api.apilayer.com/exchangerates_data/convert?to={currency_code_to}&from={currency_code_from}&amount={amount}'
-    if currency_code_from == 'USD' or 'EUR':
-        response = requests.request("GET", url, headers=headers, data = payload)
-        result = response.json()['result']
+    curr_code_to = "RUB"
+    curr_code_from = transaction["operationAmount"]["currency"]["code"]
+    amount = transaction["operationAmount"]["amount"]
+    url = f"https://api.apilayer.com/exchangerates_data/convert?to={curr_code_to}&from={curr_code_from}&amount={amount}"
+    if curr_code_from == "USD" or "EUR":
+        response = requests.request("GET", url, headers=headers, data=payload)
+        result = response.json()["result"]
         return result
     else:
         return amount
+
 
 # print(conversion_func({
 #     "id": 441945886,
@@ -38,7 +38,3 @@ def conversion_func(transaction):
 #     "from": "Maestro 1596837868705199",
 #     "to": "Счет 64686473678894779589"
 #   }))
-
-
-
-
