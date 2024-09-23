@@ -14,7 +14,9 @@ def conversion_func(transaction):
     curr_code_to = "RUB"
     curr_code_from = transaction["operationAmount"]["currency"]["code"]
     amount = transaction["operationAmount"]["amount"]
-    url = f"https://api.apilayer.com/exchangerates_data/convert?to={curr_code_to}&from={curr_code_from}&amount={amount}"
+    url = (
+        f"https://api.apilayer.com/exchangerates_data/convert?to={curr_code_to}&from={curr_code_from}&amount={amount}"
+    )
     if curr_code_from == "USD" or "EUR":
         response = requests.request("GET", url, headers=headers, data=payload)
         result = response.json()["result"]
