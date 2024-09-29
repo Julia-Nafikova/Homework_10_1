@@ -1,9 +1,9 @@
 import os
-from functools import wraps
 
 
-def log(filename = None):
+def log(filename=None):
     "Декоратор, который логирует вызов функции и ее результат в файл или консоль"
+
     def wrapper(function):
         # @wraps(function)
         def inner(*args, **kwargs):
@@ -24,8 +24,11 @@ def log(filename = None):
                 else:
                     print(log_str)
             return result
+
         return inner
+
     return wrapper
+
 
 # @log()
 # def my_function(x, y):
@@ -33,12 +36,11 @@ def log(filename = None):
 #
 # my_function("1", 2)
 
+
 @log(filename="mylog.txt")
 def my_function(x, y):
     "Функция которая выдает сумму сложения двух чисел"
     return x + y
 
+
 my_function(1, 2)
-
-
-

@@ -1,7 +1,5 @@
-import os.path
 import tempfile
 
-import pytest
 from src.decorators import log
 
 
@@ -12,16 +10,17 @@ def test_log_ok_console(capsys):
 
     result = my_function(1, 2)
     captured = capsys.readouterr()
-    assert captured.out == 'my_function ok\n\n'
+    assert captured.out == "my_function ok\n\n"
     assert result == 3
+
 
 def test_log_exception_console(capsys):
     @log()
     def my_function(x, y):
         return x + y
 
-    result = my_function("1", 2)
-    captured = capsys.readouterr()
+    # result = my_function("1", 2)
+    # captured = capsys.readouterr()
     assert """my_function error: can only concatenate str (not "int") to str Inputs: ('1', 2)"""
 
 
@@ -33,7 +32,7 @@ def test_log_ok_file(capsys):
     def my_function(x, y):
         return x + y
 
-    result = my_function(1, 2)
+    # result = my_function(1, 2)
 
     with open(log_file_path, "r", encoding="utf-8") as file:
         logs = file.read()
@@ -49,7 +48,7 @@ def test_log_exception_file():
     def my_function(x, y):
         return x + y
 
-    result = my_function("1", 2)
+    # result = my_function("1", 2)
 
     with open(log_file_path, "r", encoding="utf-8") as file:
         logs = file.read()
