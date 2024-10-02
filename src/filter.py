@@ -24,9 +24,10 @@ def filter_category(list_filter: list, list_category: list) -> dict:
     counted = Counter(new_list)
     return counted
 
+
 ret = read_file_json("./data/operations.json")
 
 category = ["Перевод организации", "Открытие вклада", "Перевод с карты на карту", "Перевод с карты на счет"]
 
-#print(filter_word(ret, "Перевод организации"))
-#print(filter_category(ret, category))
+# print(filter_word(ret, "Перевод организации"))
+# print(filter_category(ret, category))

@@ -34,7 +34,8 @@ def main():
         "\n1.Получить информацию о транзакциях из JSON-файла"
         "\n2.Получить информацию о транзакциях из CSV-файла"
         "\n3.Получить информацию о транзакциях из XLSX-файла"
-        "\nВвод: ").strip()
+        "\nВвод: "
+    ).strip()
     while True:
         if work_file == "1":
             print("Для обработки выбран JSON-файл")
@@ -51,19 +52,31 @@ def main():
         else:
             work_file = input("Данного варианта нет в списке, попробуйте еще раз:\nВвод: ")
 
-    status_operation = input("\nВведите статус, по которому необходимо выполнить фильтрацию. "
-                             "\nДоступные для фильтровки статусы: "
-                             "EXECUTED, CANCELED, PENDING:\nВвод: ").strip().upper()
+    status_operation = (
+        input(
+            "\nВведите статус, по которому необходимо выполнить фильтрацию. "
+            "\nДоступные для фильтровки статусы: "
+            "EXECUTED, CANCELED, PENDING:\nВвод: "
+        )
+        .strip()
+        .upper()
+    )
 
     while True:
         if status_operation == "PENDING" or status_operation == "EXECUTED" or status_operation == "CANCELED":
             status_operation_filter = filter_by_state(read_file, status_operation)  # ДЕЙСТВУЮЩИЙ ФИЛЬРУЕМЫЙ СПИСОК
             break
         else:
-            status_operation = input(f"Статус {status_operation} не доступен.\n"
-                                     "\nВведите статус, по которому необходимо выполнить фильтрацию."
-                                     "\nДоступные для фильтровки статусы: "
-                                     "EXECUTED, CANCELED, PENDING:\nВвод: ").strip().upper()
+            status_operation = (
+                input(
+                    f"Статус {status_operation} не доступен.\n"
+                    "\nВведите статус, по которому необходимо выполнить фильтрацию."
+                    "\nДоступные для фильтровки статусы: "
+                    "EXECUTED, CANCELED, PENDING:\nВвод: "
+                )
+                .strip()
+                .upper()
+            )
 
     while True:
         question_sort_data = input("Отсортировать операции по дате? Да/Нет\nВвод: ").lower()
@@ -96,7 +109,8 @@ def main():
 
     while True:
         question_description = input(
-            "Отфильтровать список транзакций по определенному слову описании? Да/Нет\nВвод: ").lower()
+            "Отфильтровать список транзакций по определенному слову описании? Да/Нет\nВвод: "
+        ).lower()
         if question_description == "да":
             question_description_word = input("Введите слово: ")
             finally_filter = filter_word(new_list_sort, question_description_word)
@@ -112,11 +126,15 @@ def main():
     if len(finally_filter) == 0:
         for trans in finally_filter:
             if trans["description"] in "Открытие вклада" in trans["description"]:
-                print(f"{get_date(trans["date"])} Открытие вклада\n{mask_account_card(trans["to"])}"
-                      f"\nСумма:{trans["amount"]}\n")
+                print(
+                    f"{get_date(trans["date"])} Открытие вклада\n{mask_account_card(trans["to"])}"
+                    f"\nСумма:{trans["amount"]}\n"
+                )
             else:
-                print(f"{get_date(trans["date"])} {trans["description"]}\n{mask_account_card(trans["from"])} -> "
-                      f"{mask_account_card(trans["to"])}\nСумма: {trans["amount"]} {trans["currency_code"]}\n")
+                print(
+                    f"{get_date(trans["date"])} {trans["description"]}\n{mask_account_card(trans["from"])} -> "
+                    f"{mask_account_card(trans["to"])}\nСумма: {trans["amount"]} {trans["currency_code"]}\n"
+                )
     else:
         print("Не найдено ни одной транзакции, подходящей под ваши условия фильтрации")
 
@@ -146,6 +164,6 @@ def multiplying_numbers(lists: list[int]) -> int:
         mult = nums[0] * nums[1]
         return mult
 
+
 if __name__ == "__main__":
     main()
-
