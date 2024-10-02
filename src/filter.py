@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from src.utils import read_file
+from src.utils import read_file_json
 from collections import Counter
 import re
 
@@ -24,7 +24,7 @@ def filter_category(list_filter: list, list_category: list) -> dict:
     counted = Counter(new_list)
     return counted
 
-ret = read_file("../data/operations.json")
+ret = read_file_json("./data/operations.json")
 
 category = ["Перевод организации", "Открытие вклада", "Перевод с карты на карту", "Перевод с карты на счет"]
 
