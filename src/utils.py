@@ -28,7 +28,7 @@ def read_file(path):
     return transaction_data
 
 
-# print(read_file("../data/operations.json"))
+print(read_file("../data/operations.json"))
 
 # with open(path, encoding='utf-8') as f:
 # fh = logging.FileHandler('log.txt', encoding='utf-8')
